@@ -4,15 +4,20 @@ import (
 	"database/sql"
 
 	"github.com/codeedu/go-hexagonal/application"
+	_ "github.com/mattn/go-sqlite3"
 )
 
 type ProductDb struct {
 	db *sql.DB
 }
 
+func NewProductDb(db *sql.DB) *ProductDb {
+	return &ProductDb{db: db}
+}
+
 func (p *ProductDb) Get(id string) (application.ProductInterface, error) {
 	var product application.Product
-	stmt, err := p.db.Prepare("select id, name, price from products where id=?")
+	stmt, err := p.db.Prepare("select id, name, price, status from products where id=?")
 	if err != nil {
 		return nil, err
 	}
