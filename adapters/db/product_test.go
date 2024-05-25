@@ -5,8 +5,8 @@ import (
 	"log"
 	"testing"
 
-	"github.com/codeedu/go-hexagonal/adapters/db"
-	"github.com/codeedu/go-hexagonal/application"
+	"go-hexagonal/adapters/db"
+	"go-hexagonal/application"
 	"github.com/stretchr/testify/require"
 )
 
